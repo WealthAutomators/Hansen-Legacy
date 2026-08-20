@@ -1,37 +1,46 @@
 import { NavLink } from "@/types";
-import { categories } from "./categories";
+
+export const announcementBar = "CURATED FOR EVERYDAY LIVING";
 
 export const navigationLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  {
-    label: "Categories",
-    href: "/categories",
-    children: categories.map((c) => ({
-      label: c.name,
-      href: `/categories/${c.slug}`,
-    })),
-  },
+  { label: "Shop All", href: "/shop" },
+  { label: "Home", href: "/categories/home-kitchen" },
+  { label: "Technology", href: "/categories/electronics" },
+  { label: "Kitchen", href: "/categories/home-kitchen" },
+  { label: "Family", href: "/categories/baby-products" },
+  { label: "Beauty", href: "/categories/beauty" },
+  { label: "Outdoor", href: "/categories/sports-outdoors" },
   { label: "New Arrivals", href: "/new-arrivals" },
-  { label: "Best Sellers", href: "/best-sellers" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Deals", href: "/shop?sale=true" },
 ];
 
 export const footerLinks = {
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Contact Us", href: "/contact" },
-    { label: "Careers", href: "/contact" },
-    { label: "FAQs", href: "/faq" },
+  shop: [
+    { label: "Shop All", href: "/shop" },
+    { label: "New Arrivals", href: "/new-arrivals" },
+    { label: "Best Sellers", href: "/best-sellers" },
+    { label: "Deals", href: "/shop?sale=true" },
+  ],
+  collections: [
+    { label: "Home & Kitchen", href: "/categories/home-kitchen" },
+    { label: "Technology", href: "/categories/electronics" },
+    { label: "Beauty", href: "/categories/beauty" },
+    { label: "Outdoor", href: "/categories/sports-outdoors" },
+    { label: "Family", href: "/categories/baby-products" },
   ],
   customerCare: [
     { label: "Track Order", href: "/track-order" },
     { label: "Returns", href: "/returns" },
     { label: "Shipping Policy", href: "/shipping" },
+    { label: "FAQs", href: "/faq" },
     { label: "Support", href: "/contact" },
   ],
-  legal: [
+  company: [
+    { label: "About Us", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Our Philosophy", href: "/about" },
+  ],
+  policies: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Refund Policy", href: "/refund" },

@@ -1,4 +1,5 @@
 import { company } from "@/data/company";
+import { philosophy } from "@/data/homepage";
 import { testimonials } from "@/data/testimonials";
 import { PageHero, PageSection } from "@/components/ui/page-layout";
 import { Container } from "@/components/ui/container";
@@ -6,7 +7,6 @@ import { StarRating } from "@/components/ui/star-rating";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, Award, Heart, ShoppingBag } from "lucide-react";
 
 export const metadata = { title: "About Us" };
 
@@ -21,46 +21,41 @@ export default function AboutPage() {
 
       <Container className="pb-16">
         <div className="grid items-center gap-10 py-12 md:grid-cols-2 lg:gap-16">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border shadow-sm">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border shadow-sm">
             <Image src="/banners/about.jpg" alt={`About ${company.name}`} fill className="object-cover" sizes="50vw" />
           </div>
           <PageSection title="Our Story">
             <p>
-              AAM Partners LLC was founded with a simple mission: make online shopping easier for
-              families by bringing together quality products across every category in one trusted
-              marketplace. From electronics and home essentials to toys, beauty, and pet supplies —
-              we curate products that deliver real value.
+              {company.name} was founded around a simple idea: everyday living deserves products that feel
+              considered — practical enough for real life, beautiful enough to keep close.
             </p>
             <p className="mt-4">
-              Based in Virginia Beach, Virginia, we work with reliable suppliers to offer competitive
-              prices without compromising on quality. Every product in our catalog is selected with
-              care, and our team is dedicated to making your shopping experience smooth from browsing
-              to checkout.
+              Based in {company.address.city}, {company.address.state}, we curate a broad marketplace spanning
+              home, kitchen, technology, beauty, family, outdoor, and more. Every piece is selected for
+              usefulness, quality, and lasting appeal — so shopping feels calm, not overwhelming.
             </p>
           </PageSection>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: ShoppingBag, title: "Wide Selection", desc: "12+ categories covering everything your home and family needs." },
-            { icon: Award, title: "Trusted Quality", desc: "Every product is carefully vetted for quality, value, and reliability." },
-            { icon: Heart, title: "Customer First", desc: "30-day returns, responsive support, and a satisfaction guarantee." },
-            { icon: Check, title: "Easy Shopping", desc: "One marketplace, one checkout — no jumping between multiple stores." },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="rounded-xl border border-border bg-card p-6 text-center shadow-sm">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-              <h3 className="font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+        <div className="mx-auto max-w-3xl py-8 text-center">
+          <h2 className="font-serif text-3xl font-semibold text-primary">{philosophy.title}</h2>
+          <p className="mt-4 text-muted-foreground">{philosophy.description}</p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {philosophy.principles.map((item) => (
+            <div key={item.mark} className="border border-border bg-card p-6 text-center shadow-sm">
+              <span className="font-serif text-2xl font-semibold text-secondary/70">{item.mark}</span>
+              <h3 className="mt-3 font-serif text-lg font-semibold text-primary">{item.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
             </div>
           ))}
         </div>
 
         <PageSection title="What Our Customers Say" className="mt-16">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {testimonials.map((t) => (
-              <div key={t.id} className="rounded-xl border border-border bg-card p-6 shadow-sm">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {testimonials.slice(0, 4).map((t) => (
+              <div key={t.id} className="border border-border bg-card p-6 shadow-sm">
                 <StarRating rating={t.rating} showCount={false} size="md" />
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">&ldquo;{t.text}&rdquo;</p>
                 <p className="mt-4 text-sm font-medium">{t.name}</p>

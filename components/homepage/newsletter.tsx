@@ -19,33 +19,35 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="bg-primary py-14 md:py-20">
       <Container>
-        <div className="relative overflow-hidden rounded-xl px-6 py-12 text-center md:px-16 md:py-16">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-purple-900" />
-          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5" />
-          <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-accent/10" />
-          <div className="relative">
-            <h2 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">{newsletter.title}</h2>
-            <p className="mx-auto mt-3 max-w-lg text-white/80">{newsletter.description}</p>
-            {submitted ? (
-              <p className="mt-8 text-sm font-medium text-accent">Thank you for subscribing!</p>
-            ) : (
-              <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-                <Input
-                  type="email"
-                  placeholder={newsletter.placeholder}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 border-white/20 bg-white/10 text-white placeholder:text-white/50 backdrop-blur-sm"
-                />
-                <Button type="submit" size="lg" variant="accent" className="shrink-0">
-                  {newsletter.buttonText}
-                </Button>
-              </form>
-            )}
-          </div>
+        <div className="mx-auto max-w-xl text-center">
+          <div className="mx-auto mb-4 h-px w-12 bg-accent" />
+          <h2 className="font-serif text-3xl font-semibold tracking-tight text-primary-foreground md:text-4xl">
+            {newsletter.title}
+          </h2>
+          <p className="mt-3 text-primary-foreground/70">{newsletter.description}</p>
+          {submitted ? (
+            <p className="mt-8 text-sm font-medium text-primary-foreground">Thank you for subscribing.</p>
+          ) : (
+            <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+              <Input
+                type="email"
+                placeholder={newsletter.placeholder}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 rounded-md border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/45 focus-visible:ring-primary-foreground/30"
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className="shrink-0 bg-accent text-white hover:bg-accent/90"
+              >
+                {newsletter.buttonText}
+              </Button>
+            </form>
+          )}
         </div>
       </Container>
     </section>

@@ -2,7 +2,7 @@ import { company } from "./company";
 
 export const faqItems = [
   {
-    question: "What types of products does AAM Partners LLC sell?",
+    question: "What types of products does Hansen Legacy sell?",
     answer:
       "We offer a wide range of products across 12+ categories including electronics, home & kitchen, bathroom essentials, beauty & personal care, toys & games, pet supplies, sports & outdoors, office supplies, health & wellness, baby products, and fashion accessories.",
   },
@@ -55,7 +55,7 @@ export const faqItems = [
 
 export const shippingPolicy = {
   title: "Shipping Policy",
-  description: "Everything you need to know about how we deliver your AAM Partners LLC orders.",
+  description: "Everything you need to know about how we deliver your Hansen Legacy orders.",
   sections: [
     {
       title: "Processing Time",
@@ -90,7 +90,7 @@ export const shippingPolicy = {
 
 export const returnPolicy = {
   title: "Return Policy",
-  description: "We want you to love every AAM Partners LLC purchase. If you're not satisfied, we're here to help.",
+  description: "We want you to love every Hansen Legacy purchase. If you're not satisfied, we're here to help.",
   sections: [
     {
       title: "30-Day Return Window",
@@ -128,7 +128,7 @@ export const returnPolicy = {
 
 export const refundPolicy = {
   title: "Refund Policy",
-  description: "Our commitment to fair and transparent refunds for every AAM Partners LLC order.",
+  description: "Our commitment to fair and transparent refunds for every Hansen Legacy order.",
   sections: [
     {
       title: "Refund Eligibility",
@@ -163,7 +163,7 @@ export const refundPolicy = {
 
 export const privacyPolicy = {
   title: "Privacy Policy",
-  description: "Last updated: January 1, 2026. How AAM Partners LLC collects, uses, and protects your information.",
+  description: "Last updated: January 1, 2026. How Hansen Legacy collects, uses, and protects your information.",
   sections: [
     {
       title: "Information We Collect",
@@ -206,12 +206,12 @@ export const privacyPolicy = {
 
 export const termsPolicy = {
   title: "Terms & Conditions",
-  description: "Please read these terms carefully before using the AAM Partners LLC website.",
+  description: "Please read these terms carefully before using the Hansen Legacy website.",
   sections: [
     {
       title: "Acceptance of Terms",
       content:
-        "By accessing and using the AAM Partners LLC website, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our website.",
+        "By accessing and using the Hansen Legacy website, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our website.",
     },
     {
       title: "Products & Pricing",
@@ -226,17 +226,17 @@ export const termsPolicy = {
     {
       title: "Intellectual Property",
       content:
-        "All content on this website — including text, images, logos, and design — is the property of AAM Partners LLC and protected by copyright and trademark laws. You may not reproduce, distribute, or use our content without written permission.",
+        "All content on this website — including text, images, logos, and design — is the property of Hansen Legacy and protected by copyright and trademark laws. You may not reproduce, distribute, or use our content without written permission.",
     },
     {
       title: "Limitation of Liability",
       content:
-        "AAM Partners LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of our website or products. Our total liability shall not exceed the amount you paid for the product in question.",
+        "Hansen Legacy shall not be liable for any indirect, incidental, or consequential damages arising from your use of our website or products. Our total liability shall not exceed the amount you paid for the product in question.",
     },
     {
       title: "Governing Law",
       content:
-        "These terms are governed by the laws of the Commonwealth of Virginia, United States. Any disputes shall be resolved in the courts of Virginia Beach, Virginia.",
+        "These terms are governed by the laws of the State of Maryland, United States. Any disputes shall be resolved in the courts of Anne Arundel County, Maryland.",
     },
   ],
 };

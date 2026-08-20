@@ -2,63 +2,71 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { heroSlides } from "@/data/homepage";
-import { company } from "@/data/company";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Carousel } from "@/components/ui/carousel";
 
 export function HeroBanner() {
+  const slide = heroSlides[0];
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+
   return (
-    <section className="relative border-b border-border">
-      <Carousel autoplay showDots showArrows className="w-full">
-        {heroSlides.map((slide) => (
-          <div key={slide.id} className="relative aspect-[16/6] min-h-[480px] w-full md:min-h-[560px] lg:aspect-[16/5]">
-            <Image
-              src={slide.image}
-              alt={slide.headline}
-              fill
-              className="object-cover"
-              priority={slide.id === "1"}
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-primary/30 to-transparent" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,158,11,0.12),transparent_55%)]" />
-            <Container className="relative flex h-full items-center">
-              <motion.div
-                className="max-w-xl text-white"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <span className="inline-block rounded-full bg-accent/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-                  {company.name}
-                </span>
-                <h1 className="mt-3 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-[2.75rem]">
-                  {slide.headline}
-                </h1>
-                <p className="mt-2 max-w-md text-sm text-white/85 sm:text-base">{slide.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2.5">
-                  <Button asChild size="default" className="bg-white text-primary hover:bg-accent hover:text-white">
-                    <Link href={slide.ctaLink}>{slide.ctaText}</Link>
-                  </Button>
-                  {slide.secondaryCtaText && slide.secondaryCtaLink && (
-                    <Button
-                      asChild
-                      size="default"
-                      variant="outline"
-                      className="border-white/40 bg-transparent text-white hover:bg-white/15 hover:text-white"
-                    >
-                      <Link href={slide.secondaryCtaLink}>{slide.secondaryCtaText}</Link>
-                    </Button>
-                  )}
-                </div>
-              </motion.div>
-            </Container>
-          </div>
-        ))}
-      </Carousel>
+    <section ref={ref} className="relative overflow-hidden bg-background">
+      <div className="relative min-h-[78vh] w-full md:min-h-[85vh]">
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: imageY, scale: imageScale }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "tween", duration: 0.8 }}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.headline.replace("\n", " ")}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-primary/10" />
+        </motion.div>
+
+        <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-8 sm:px-8 md:pb-12 lg:px-12">
+          <motion.div
+            className="max-w-lg border border-border bg-card/95 p-6 shadow-sm backdrop-blur-sm sm:p-8 md:p-10"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <p className="label-caps text-secondary">THE HANSEN EDIT</p>
+            <h1 className="mt-3 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-primary sm:text-4xl md:text-5xl whitespace-pre-line">
+              {slide.headline}
+            </h1>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {slide.description}
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href={slide.ctaLink}>{slide.ctaText}</Link>
+              </Button>
+              {slide.secondaryCtaText && slide.secondaryCtaLink && (
+                <Link
+                  href={slide.secondaryCtaLink}
+                  className="text-sm font-medium text-primary underline-offset-4 transition-colors hover:text-secondary hover:underline"
+                >
+                  {slide.secondaryCtaText}
+                </Link>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

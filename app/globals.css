@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #1f2937;
-  --primary: #7c3aed;
-  --primary-foreground: #ffffff;
-  --accent: #f59e0b;
+  --background: #f3efe7;
+  --foreground: #252822;
+  --primary: #29352d;
+  --primary-foreground: #f3efe7;
+  --secondary: #8b6f47;
+  --secondary-foreground: #fffcf7;
+  --accent: #b84a3a;
   --accent-foreground: #ffffff;
-  --pink: #ec4899;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --border: #e5e7eb;
-  --ring: #7c3aed;
-  --card: #ffffff;
-  --radius: 12px;
+  --muted: #ede8df;
+  --muted-foreground: #77736b;
+  --border: #d8d0c3;
+  --ring: #29352d;
+  --card: #fffcf7;
+  --radius: 8px;
 }
 
 @theme inline {
@@ -21,23 +22,32 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-pink: var(--pink);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-card: var(--card);
   --font-sans: var(--font-inter);
-  --radius-lg: 12px;
-  --radius-xl: 12px;
+  --font-serif: var(--font-cormorant);
+  --radius-lg: 8px;
+  --radius-xl: 10px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-serif {
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
 
 @keyframes accordion-down {
@@ -68,4 +78,11 @@ html {
 
 body {
   overflow-x: hidden;
+}
+
+.label-caps {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
